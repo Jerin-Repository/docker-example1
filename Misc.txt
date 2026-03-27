@@ -1,0 +1,42 @@
+docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrongP@ssw0rd" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+
+look at the launch settings for getting ports
+
+docker build . -t api
+docker run -p 5236:8080 api
+
+docker build . -t frontend
+docker run -p 5009:8080 frontend
+
+C#
+
+var db = new SqlConnection("Server=localhost,1433;Database=TestDB;User ID=sa;Password=YourStrongP@ssw0rd;TrustServerCertificate=True;");
+
+var data = await db.QueryAsync<Data>("SELECT Id, Title FROM Data");
+
+
+DB
+
+CREATE DATABASE TestDB;
+
+use TestDB
+
+CREATE TABLE Data (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    title NVARCHAR(255) NOT NULL
+);
+
+
+INSERT INTO Data (title) VALUES
+('The Daily'),
+('Radiolab'),
+('99% Invisible'),
+('Stuff You Should Know'),
+('Reply All'),
+('Freakonomics Radio'),
+('The Tim Ferriss Show'),
+('How I Built This'),
+('Science Vs'),
+('Planet Money');
+
+
