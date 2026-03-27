@@ -6,3 +6,6 @@
 /backend/.vs
 /backend/bin/Debug/net9.0
 /backend/obj
+/webapp-withdocker/.vs
+/webapp-withdocker/bin
+/webapp-withdocker/obj
