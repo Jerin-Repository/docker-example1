@@ -1,11 +1,15 @@
 services:
 
   frontend:
+      build:
+           context: ./webapp-withdocker/.          
       image: frontend
       container_name: frontend
       ports:
             - 5009:8080
   api:
+       build:
+            context: ./backend/.
        image: api
        container_name: api
        ports:
