@@ -22,3 +22,11 @@ services:
                 - SA_PASSWORD=YourStrongP@ssw0rd
        ports:
             - 1433:1433
+       # volumes:
+       #      - ./Database/CreateDatabaseAndSeed.sql:/var/opt/mssql/scripts/CreateDatabaseAndSeed.sql
+  database-seed:
+        depends_on: [database]
+        build:
+            context: Database/
+            dockerfile: Dockerfile
+        container_name: database-seed
